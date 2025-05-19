@@ -1,0 +1,1622 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vishal Kushwaha | Creative Developer</title>
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Base Styles */
+      :root {
+        /* Light Theme Colors */
+        --primary-color: #4f46e5;
+        --secondary-color: #8b5cf6;
+        --text-color: #333333;
+        --bg-color: #ffffff;
+        --card-bg: #f8f9fa;
+        --border-color: #e5e7eb;
+        --heading-color: #1f2937;
+        --light-text: #6b7280;
+        --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        --hover-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .dark-theme {
+        /* Dark Theme Colors */
+        --primary-color: #6366f1;
+        --secondary-color: #a78bfa;
+        --text-color: #e5e7eb;
+        --bg-color: #111827;
+        --card-bg: #1f2937;
+        --border-color: #374151;
+        --heading-color: #f9fafb;
+        --light-text: #9ca3af;
+        --shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        --hover-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        line-height: 1.6;
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+
+      a {
+        text-decoration: none;
+        color: var(--primary-color);
+        transition: color 0.3s ease;
+      }
+
+      ul {
+        list-style: none;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      section {
+        padding: 100px 0;
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: 60px;
+      }
+
+      .section-header h3 {
+        color: var(--primary-color);
+        font-size: 18px;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 10px;
+      }
+
+      .section-header h2 {
+        color: var(--heading-color);
+        font-size: 36px;
+        font-weight: 700;
+        position: relative;
+        padding-bottom: 20px;
+      }
+
+      .section-header h2::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 50px;
+        height: 3px;
+        background: var(--primary-color);
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 12px 30px;
+        border-radius: 30px;
+        font-weight: 500;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .primary-btn {
+        background: var(--primary-color);
+        color: white;
+        border: 2px solid var(--primary-color);
+      }
+
+      .primary-btn:hover {
+        background: transparent;
+        color: var(--primary-color);
+      }
+
+      .secondary-btn {
+        background: transparent;
+        color: var(--primary-color);
+        border: 2px solid var(--primary-color);
+      }
+
+      .secondary-btn:hover {
+        background: var(--primary-color);
+        color: white;
+      }
+
+      /* Header Styles */
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        background-color: var(--bg-color);
+        box-shadow: var(--shadow);
+        padding: 20px 0;
+        transition: all 0.3s ease;
+      }
+
+      header .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo a {
+        font-size: 24px;
+        font-weight: 700;
+        color: var(--heading-color);
+      }
+
+      .logo span {
+        color: var(--primary-color);
+      }
+
+      nav {
+        display: flex;
+        align-items: center;
+      }
+
+      .nav-links {
+        display: flex;
+      }
+
+      .nav-links li {
+        margin-left: 30px;
+      }
+
+      .nav-links a {
+        color: var(--text-color);
+        font-weight: 500;
+        position: relative;
+      }
+
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--primary-color);
+        transition: width 0.3s ease;
+      }
+
+      .nav-links a:hover::after,
+      .nav-links a.active::after {
+        width: 100%;
+      }
+
+      .nav-links a:hover,
+      .nav-links a.active {
+        color: var(--primary-color);
+      }
+
+      .theme-toggle {
+        position: relative;
+        width: 60px;
+        height: 30px;
+        background: var(--card-bg);
+        border-radius: 30px;
+        margin-left: 30px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 5px;
+      }
+
+      .theme-toggle i {
+        font-size: 14px;
+        color: var(--light-text);
+      }
+
+      .toggle-ball {
+        position: absolute;
+        width: 24px;
+        height: 24px;
+        background: var(--primary-color);
+        border-radius: 50%;
+        left: 3px;
+        transition: transform 0.3s ease;
+      }
+
+      .dark-theme .toggle-ball {
+        transform: translateX(30px);
+      }
+
+      .hamburger {
+        display: none;
+        cursor: pointer;
+      }
+
+      .hamburger span {
+        display: block;
+        width: 25px;
+        height: 3px;
+        background: var(--text-color);
+        margin: 5px 0;
+        transition: all 0.3s ease;
+      }
+
+      /* Hero Section */
+      .hero {
+        padding-top: 180px;
+        padding-bottom: 100px;
+        overflow: hidden;
+      }
+
+      .hero .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .hero-content {
+        flex: 1;
+        padding-right: 50px;
+      }
+
+      .hero-content h1 {
+        font-size: 48px;
+        font-weight: 700;
+        color: var(--heading-color);
+        margin-bottom: 10px;
+        line-height: 1.2;
+      }
+
+      .hero-content h1 span {
+        color: var(--primary-color);
+      }
+
+      .hero-content h2 {
+        font-size: 24px;
+        font-weight: 600;
+        color: var(--light-text);
+        margin-bottom: 20px;
+      }
+
+      .hero-content p {
+        font-size: 18px;
+        margin-bottom: 30px;
+      }
+
+      .hero-buttons {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 30px;
+      }
+
+      .social-icons {
+        display: flex;
+        gap: 15px;
+      }
+
+      .social-icons a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: var(--card-bg);
+        color: var(--primary-color);
+        transition: all 0.3s ease;
+      }
+
+      .social-icons a:hover {
+        background: var(--primary-color);
+        color: white;
+        transform: translateY(-3px);
+      }
+
+      .hero-image {
+        flex: 1;
+        position: relative;
+      }
+
+      .hero-image img {
+        border-radius: 20px;
+        box-shadow: var(--shadow);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .hero-image img:hover {
+        transform: translateY(-10px);
+        box-shadow: var(--hover-shadow);
+      }
+
+      /* About Section */
+      .about-content {
+        display: flex;
+        align-items: center;
+        gap: 50px;
+      }
+
+      .about-image {
+        flex: 1;
+      }
+
+      .about-image img {
+        border-radius: 20px;
+        box-shadow: var(--shadow);
+      }
+
+      .about-text {
+        flex: 1;
+      }
+
+      .about-text h3 {
+        font-size: 24px;
+        font-weight: 600;
+        color: var(--heading-color);
+        margin-bottom: 20px;
+      }
+
+      .about-text p {
+        margin-bottom: 20px;
+      }
+
+      .about-info {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        margin-bottom: 30px;
+      }
+
+      .info-item h4 {
+        font-weight: 600;
+        color: var(--primary-color);
+        margin-bottom: 5px;
+      }
+
+      /* Skills Section */
+      .skills-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        margin-bottom: 60px;
+      }
+
+      .skill-card {
+        background: var(--card-bg);
+        padding: 30px;
+        border-radius: 10px;
+        text-align: center;
+        box-shadow: var(--shadow);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .skill-card:hover {
+        transform: translateY(-10px);
+        box-shadow: var(--hover-shadow);
+      }
+
+      .skill-icon {
+        width: 70px;
+        height: 70px;
+        background: var(--primary-color);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 20px;
+      }
+
+      .skill-icon i {
+        font-size: 30px;
+        color: white;
+      }
+
+      .skill-card h3 {
+        font-size: 20px;
+        font-weight: 600;
+        color: var(--heading-color);
+        margin-bottom: 15px;
+      }
+
+      .technical-skills h3 {
+        font-size: 24px;
+        font-weight: 600;
+        color: var(--heading-color);
+        margin-bottom: 30px;
+        text-align: center;
+      }
+
+      .skill-bars {
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+      .skill-bar {
+        margin-bottom: 30px;
+      }
+
+      .skill-info {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+      }
+
+      .skill-info span {
+        font-weight: 500;
+        color: var(--heading-color);
+      }
+
+      .skill-progress {
+        height: 10px;
+        background: var(--card-bg);
+        border-radius: 10px;
+        overflow: hidden;
+      }
+
+      .progress {
+        height: 100%;
+        background: linear-gradient(
+          to right,
+          var(--primary-color),
+          var(--secondary-color)
+        );
+        border-radius: 10px;
+        transition: width 1s ease;
+      }
+
+      /* Portfolio Section */
+      .portfolio-filter {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin-bottom: 40px;
+      }
+
+      .filter-btn {
+        padding: 8px 20px;
+        background: var(--card-bg);
+        border: none;
+        border-radius: 30px;
+        color: var(--text-color);
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .filter-btn.active,
+      .filter-btn:hover {
+        background: var(--primary-color);
+        color: white;
+      }
+
+      .portfolio-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 30px;
+      }
+
+      .portfolio-item {
+        border-radius: 10px;
+        overflow: hidden;
+        position: relative;
+        box-shadow: var(--shadow);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .portfolio-item:hover {
+        transform: translateY(-10px);
+        box-shadow: var(--hover-shadow);
+      }
+
+      .portfolio-img img {
+        transition: transform 0.5s ease;
+      }
+
+      .portfolio-item:hover .portfolio-img img {
+        transform: scale(1.1);
+      }
+
+      .portfolio-info {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 20px;
+        background: rgba(0, 0, 0, 0.7);
+        color: white;
+        transform: translateY(100%);
+        transition: transform 0.3s ease;
+      }
+
+      .portfolio-item:hover .portfolio-info {
+        transform: translateY(0);
+      }
+
+      .portfolio-info h3 {
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 5px;
+      }
+
+      .portfolio-info p {
+        font-size: 14px;
+        opacity: 0.8;
+      }
+
+      .portfolio-link {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+        background: var(--primary-color);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.3s ease;
+      }
+
+      .portfolio-item:hover .portfolio-link {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Testimonials Section */
+      .testimonial-slider {
+        max-width: 800px;
+        margin: 0 auto;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .testimonial-item {
+        display: none;
+      }
+
+      .testimonial-item.active {
+        display: block;
+        animation: fadeIn 0.5s ease;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .testimonial-content {
+        background: var(--card-bg);
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: var(--shadow);
+        margin-bottom: 30px;
+      }
+
+      .testimonial-content p {
+        font-size: 18px;
+        font-style: italic;
+        margin-bottom: 20px;
+      }
+
+      .client-info {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .client-info img {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      .client-info h4 {
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--heading-color);
+      }
+
+      .testimonial-dots {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 30px;
+      }
+
+      .dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: var(--card-bg);
+        cursor: pointer;
+        transition: background 0.3s ease;
+      }
+
+      .dot.active {
+        background: var(--primary-color);
+      }
+
+      /* Contact Section */
+      .contact-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 50px;
+      }
+
+      .contact-info {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 30px;
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 15px;
+      }
+
+      .contact-item .icon {
+        width: 50px;
+        height: 50px;
+        background: var(--primary-color);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 20px;
+      }
+
+      .contact-item h3 {
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--heading-color);
+        margin-bottom: 5px;
+      }
+
+      .contact-form {
+        background: var(--card-bg);
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: var(--shadow);
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 12px 15px;
+        background: var(--bg-color);
+        border: 1px solid var(--border-color);
+        border-radius: 5px;
+        color: var(--text-color);
+        font-family: "Poppins", sans-serif;
+        transition: border-color 0.3s ease;
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus {
+        outline: none;
+        border-color: var(--primary-color);
+      }
+
+      .form-group textarea {
+        height: 150px;
+        resize: none;
+      }
+
+      /* Footer */
+      footer {
+        background: var(--card-bg);
+        padding: 50px 0 20px;
+      }
+
+      .footer-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+      }
+
+      .footer-logo a {
+        font-size: 24px;
+        font-weight: 700;
+        color: var(--heading-color);
+      }
+
+      .footer-social {
+        display: flex;
+        gap: 15px;
+      }
+
+      .footer-social a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: var(--bg-color);
+        color: var(--primary-color);
+        transition: all 0.3s ease;
+      }
+
+      .footer-social a:hover {
+        background: var(--primary-color);
+        color: white;
+        transform: translateY(-3px);
+      }
+
+      .footer-bottom {
+        text-align: center;
+        padding-top: 20px;
+        border-top: 1px solid var(--border-color);
+      }
+
+      /* Responsive Styles */
+      @media (max-width: 992px) {
+        .hero .container {
+          flex-direction: column;
+        }
+
+        .hero-content {
+          padding-right: 0;
+          margin-bottom: 50px;
+          text-align: center;
+        }
+
+        .hero-buttons {
+          justify-content: center;
+        }
+
+        .social-icons {
+          justify-content: center;
+        }
+
+        .about-content {
+          flex-direction: column;
+        }
+
+        .about-image {
+          margin-bottom: 30px;
+        }
+
+        .contact-info {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 768px) {
+        header {
+          padding: 15px 0;
+        }
+
+        .nav-links {
+          position: fixed;
+          top: 80px;
+          left: -100%;
+          width: 100%;
+          height: calc(100vh - 80px);
+          background: var(--bg-color);
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 30px;
+          transition: left 0.3s ease;
+        }
+
+        .nav-links.active {
+          left: 0;
+        }
+
+        .nav-links li {
+          margin-left: 0;
+        }
+
+        .hamburger {
+          display: block;
+          margin-left: 20px;
+        }
+
+        .hamburger.active span:nth-child(1) {
+          transform: rotate(45deg) translate(5px, 6px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+          opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+          transform: rotate(-45deg) translate(5px, -6px);
+        }
+
+        .section-header h2 {
+          font-size: 28px;
+        }
+
+        .hero-content h1 {
+          font-size: 36px;
+        }
+
+        .hero-content h2 {
+          font-size: 20px;
+        }
+
+        .portfolio-filter {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .footer-content {
+          flex-direction: column;
+          gap: 20px;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .hero-buttons {
+          flex-direction: column;
+        }
+
+        .about-info {
+          grid-template-columns: 1fr;
+        }
+
+        .portfolio-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+
+  <body class="light-theme">
+    <header>
+      <div class="container">
+        <div class="logo">
+          <a href="#">Vishal<span>Kushwaha</span></a>
+        </div>
+        <nav>
+          <ul class="nav-links">
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+          <div class="theme-toggle">
+            <i class="fas fa-sun"></i>
+            <i class="fas fa-moon"></i>
+            <div class="toggle-ball"></div>
+          </div>
+          <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <section id="home" class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h1>Hi, I'm <span>Vishal Kushwaha</span></h1>
+          <h2>Creative Developer & Designer</h2>
+          <p>
+            I craft beautiful, functional websites and digital experiences that
+            help businesses grow.
+          </p>
+          <div class="hero-buttons">
+            <a href="#portfolio" class="btn primary-btn">View My Work</a>
+            <a href="#contact" class="btn secondary-btn">Contact Me</a>
+          </div>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-dribbble"></i></a>
+          </div>
+        </div>
+        <div class="hero-image">
+          <img src="img.png" alt="Vishal Kushwaha" />
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="about">
+      <div class="container">
+        <div class="section-header">
+          <h3>About Me</h3>
+          <h2>My Story</h2>
+        </div>
+        <div class="about-content">
+          <div class="about-image">
+            <img src="img.png" alt="About Vishal Kushwaha" />
+          </div>
+          <div class="about-text">
+            <h3>A passionate developer with 5+ years of experience</h3>
+            <p>
+              I'm a freelance web developer and designer based in mumbai . I
+              specialize in creating modern, responsive websites and
+              applications that help businesses achieve their goals.
+            </p>
+            <p>
+              My journey began in 2018 when I discovered my passion for coding.
+              Since then, I've worked with clients from various industries,
+              helping them establish a strong online presence.
+            </p>
+            <div class="about-info">
+              <div class="info-item">
+                <h4>Name:</h4>
+                <p>Vishal Kushwaha</p>
+              </div>
+              <div class="info-item">
+                <h4>Email:</h4>
+                <p>vishal.dilip.kushwaha@gmail.com</p>
+              </div>
+              <div class="info-item">
+                <h4>Location:</h4>
+                <p>Thane, MH</p>
+              </div>
+              <div class="info-item">
+                <h4>Freelance:</h4>
+                <p>Available</p>
+              </div>
+            </div>
+            <a href="vishal kushwaha.pdf" class="btn primary-btn"
+              >Download CV</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="skills">
+      <div class="container">
+        <div class="section-header">
+          <h3>My Skills</h3>
+          <h2>What I'm Good At</h2>
+        </div>
+        <div class="skills-content">
+          <div class="skill-card">
+            <div class="skill-icon">
+              <i class="fas fa-code"></i>
+            </div>
+            <h3>Web Development</h3>
+            <p>
+              Creating responsive, user-friendly websites using modern
+              technologies.
+            </p>
+          </div>
+          <div class="skill-card">
+            <div class="skill-icon">
+              <i class="fas fa-palette"></i>
+            </div>
+            <h3>UI/UX Design</h3>
+            <p>
+              Designing intuitive interfaces that provide exceptional user
+              experiences.
+            </p>
+          </div>
+          <div class="skill-card">
+            <div class="skill-icon">
+              <i class="fas fa-mobile-alt"></i>
+            </div>
+            <h3>Mobile Development</h3>
+            <p>
+              Building cross-platform mobile applications that work seamlessly.
+            </p>
+          </div>
+          <div class="skill-card">
+            <div class="skill-icon">
+              <i class="fas fa-search"></i>
+            </div>
+            <h3>SEO Optimization</h3>
+            <p>
+              Improving website visibility and rankings in search engine
+              results.
+            </p>
+          </div>
+        </div>
+        <div class="technical-skills">
+          <h3>Technical Skills</h3>
+          <div class="skill-bars">
+            <div class="skill-bar">
+              <div class="skill-info">
+                <span>HTML/CSS</span>
+                <span>95%</span>
+              </div>
+              <div class="skill-progress">
+                <div class="progress" style="width: 95%"></div>
+              </div>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-info">
+                <span>JavaScript</span>
+                <span>90%</span>
+              </div>
+              <div class="skill-progress">
+                <div class="progress" style="width: 90%"></div>
+              </div>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-info">
+                <span>React</span>
+                <span>85%</span>
+              </div>
+              <div class="skill-progress">
+                <div class="progress" style="width: 85%"></div>
+              </div>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-info">
+                <span>Node.js</span>
+                <span>80%</span>
+              </div>
+              <div class="skill-progress">
+                <div class="progress" style="width: 80%"></div>
+              </div>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-info">
+                <span>UI/UX Design</span>
+                <span>75%</span>
+              </div>
+              <div class="skill-progress">
+                <div class="progress" style="width: 75%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="portfolio" class="portfolio">
+      <div class="container">
+        <div class="section-header">
+          <h3>My Portfolio</h3>
+          <h2>Recent Work</h2>
+        </div>
+        <div class="portfolio-filter">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="web">Web Design</button>
+          <button class="filter-btn" data-filter="app">App Development</button>
+          <button class="filter-btn" data-filter="ui">UI/UX Design</button>
+        </div>
+        <div class="portfolio-grid">
+          <div class="portfolio-item" data-category="web">
+            <div class="portfolio-img">
+              <img src="image.png" alt="Portfolio Item" />
+            </div>
+            <div class="portfolio-info">
+              <h3>CloudPunch Website</h3>
+              <p>Web Design</p>
+              <a href="https://cloudpunch.net/" class="portfolio-link"
+                ><i class="fas fa-link"></i
+              ></a>
+            </div>
+          </div>
+          <div class="portfolio-item" data-category="app">
+            <div class="portfolio-img">
+              <img src="image.png" alt="Portfolio Item" />
+            </div>
+            <div class="portfolio-info">
+              <h3>CloudPunch Website</h3>
+              <p>Web Design</p>
+              <a href="https://cloudpunch.net/" class="portfolio-link"
+                ><i class="fas fa-link"></i
+              ></a>
+            </div>
+          </div>
+          <div class="portfolio-item" data-category="ui">
+            <div class="portfolio-img">
+              <img src="image.png" alt="Portfolio Item" />
+            </div>
+            <div class="portfolio-info">
+              <h3>CloudPunch Website</h3>
+              <p>Web Design</p>
+              <a href="https://cloudpunch.net/" class="portfolio-link"
+                ><i class="fas fa-link"></i
+              ></a>
+            </div>
+          </div>
+          <div class="portfolio-item" data-category="web">
+            <div class="portfolio-img">
+              <img src="image.png" alt="Portfolio Item" />
+            </div>
+            <div class="portfolio-info">
+              <h3>CloudPunch Website</h3>
+              <p>Web Design</p>
+              <a href="https://cloudpunch.net/" class="portfolio-link"
+                ><i class="fas fa-link"></i
+              ></a>
+            </div>
+          </div>
+          <div class="portfolio-item" data-category="app">
+            <div class="portfolio-img">
+              <img src="image.png" alt="Portfolio Item" />
+            </div>
+            <div class="portfolio-info">
+              <h3>CloudPunch Website</h3>
+              <p>Web Design</p>
+              <a href="https://cloudpunch.net/" class="portfolio-link"
+                ><i class="fas fa-link"></i
+              ></a>
+            </div>
+          </div>
+          <div class="portfolio-item" data-category="ui">
+            <div class="portfolio-img">
+              <img src="image.png" alt="Portfolio Item" />
+            </div>
+            <div class="portfolio-info">
+              <h3>CloudPunch Website</h3>
+              <p>Web Design</p>
+              <a href="https://cloudpunch.net/" class="portfolio-link"
+                ><i class="fas fa-link"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="testimonials" class="testimonials">
+      <div class="container">
+        <div class="section-header">
+          <h3>Testimonials</h3>
+          <h2>What Clients Say</h2>
+        </div>
+        <div class="testimonial-slider">
+          <div class="testimonial-item active">
+            <div class="testimonial-content">
+              <p>
+                "Vishal created an amazing website for our business. The design
+                is modern, clean, and exactly what we were looking for. Highly
+                recommended!"
+              </p>
+              <div class="client-info">
+                <img src="https://via.placeholder.com/80x80" alt="Client" />
+                <div>
+                  <h4>Sarah Johnson</h4>
+                  <p>CEO, TechStart</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-item">
+            <div class="testimonial-content">
+              <p>
+                "Working with Vishal was a pleasure. They understood our
+                requirements perfectly and delivered a product that exceeded our
+                expectations."
+              </p>
+              <div class="client-info">
+                <img src="https://via.placeholder.com/80x80" alt="Client" />
+                <div>
+                  <h4>Michael Brown</h4>
+                  <p>Founder, DesignHub</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-item">
+            <div class="testimonial-content">
+              <p>
+                "Vishal is a talented developer who brings creativity and
+                technical expertise to every project. Our app looks fantastic
+                and works flawlessly."
+              </p>
+              <div class="client-info">
+                <img src="https://via.placeholder.com/80x80" alt="Client" />
+                <div>
+                  <h4>Emily Davis</h4>
+                  <p>Marketing Director, FitLife</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-dots">
+          <span class="dot active"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+      </div>
+    </section>
+    <section id="contact" class="contact">
+      <div class="container">
+        <div class="section-header">
+          <h3>Contact Me</h3>
+          <h2>Get In Touch</h2>
+        </div>
+        <div class="contact-content">
+          <div class="contact-info">
+            <div class="contact-item">
+              <div class="icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div class="text">
+                <h3>Location</h3>
+                <p>Mumbai, MH, India</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="text">
+                <h3>Email</h3>
+                <p>vishal.dilip.kushwaha.com</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="icon">
+                <i class="fas fa-phone"></i>
+              </div>
+              <div class="text">
+                <h3>Phone</h3>
+                <p>+919730076114</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="icon">
+                <i class="fas fa-globe"></i>
+              </div>
+              <div class="text">
+                <h3>Website</h3>
+                <p>www.portfolio.com</p>
+              </div>
+            </div>
+          </div>
+          <div class="contact-form">
+            <form id="contactForm">
+              <div class="form-group">
+                <input type="text" id="name" placeholder="Your Name" required />
+              </div>
+              <div class="form-group">
+                <input
+                  type="email"
+                  id="email"
+                  placeholder="Your Email"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="text"
+                  id="subject"
+                  placeholder="Subject"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <textarea
+                  id="message"
+                  placeholder="Your Message"
+                  required
+                ></textarea>
+              </div>
+              <button type="submit" class="btn primary-btn">
+                Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-logo">
+            <a href="#">Vishal<span>Kushwaha</span></a>
+          </div>
+          <div class="footer-social">
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-dribbble"></i></a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2023 Vishal Kushwaha. All Rights Reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- <script src="script.js"></script> -->
+    <script>
+      // DOM Elements
+      const themeToggle = document.querySelector(".theme-toggle");
+      const body = document.querySelector("body");
+      const hamburger = document.querySelector(".hamburger");
+      const navLinks = document.querySelector(".nav-links");
+      const navLinksItems = document.querySelectorAll(".nav-links a");
+      const filterBtns = document.querySelectorAll(".filter-btn");
+      const portfolioItems = document.querySelectorAll(".portfolio-item");
+      const testimonialDots = document.querySelectorAll(".dot");
+      const testimonialItems = document.querySelectorAll(".testimonial-item");
+      const skillBars = document.querySelectorAll(".progress");
+      const contactForm = document.getElementById("contactForm");
+
+      // Theme Toggle
+      themeToggle.addEventListener("click", () => {
+        body.classList.toggle("dark-theme");
+        // Save theme preference to localStorage
+        const isDarkTheme = body.classList.contains("dark-theme");
+        localStorage.setItem("darkTheme", isDarkTheme);
+      });
+
+      // Check for saved theme preference
+      const savedTheme = localStorage.getItem("darkTheme");
+      if (savedTheme === "true") {
+        body.classList.add("dark-theme");
+      }
+
+      // Mobile Menu Toggle
+      hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("active");
+        navLinks.classList.toggle("active");
+      });
+
+      // Close mobile menu when clicking on a nav link
+      navLinksItems.forEach((item) => {
+        item.addEventListener("click", () => {
+          hamburger.classList.remove("active");
+          navLinks.classList.remove("active");
+        });
+      });
+
+      // Active link on scroll
+      window.addEventListener("scroll", () => {
+        const scrollPosition = window.scrollY;
+
+        // Header shadow on scroll
+        const header = document.querySelector("header");
+        if (scrollPosition > 50) {
+          header.style.boxShadow = "var(--shadow)";
+        } else {
+          header.style.boxShadow = "none";
+        }
+
+        // Highlight active nav link based on scroll position
+        document.querySelectorAll("section").forEach((section) => {
+          const sectionTop = section.offsetTop - 100;
+          const sectionHeight = section.offsetHeight;
+          const sectionId = section.getAttribute("id");
+
+          if (
+            scrollPosition >= sectionTop &&
+            scrollPosition < sectionTop + sectionHeight
+          ) {
+            navLinksItems.forEach((item) => {
+              item.classList.remove("active");
+              if (item.getAttribute("href") === `#${sectionId}`) {
+                item.classList.add("active");
+              }
+            });
+          }
+        });
+
+        // Animate skill bars when in viewport
+        const skillsSection = document.querySelector(".skills");
+        if (skillsSection) {
+          const sectionTop = skillsSection.offsetTop;
+          const sectionHeight = skillsSection.offsetHeight;
+
+          if (
+            scrollPosition > sectionTop - 300 &&
+            scrollPosition < sectionTop + sectionHeight
+          ) {
+            skillBars.forEach((bar) => {
+              const width = bar.style.width;
+              if (!width) {
+                const targetWidth =
+                  bar.parentElement.previousElementSibling.lastElementChild
+                    .textContent;
+                bar.style.width = targetWidth;
+              }
+            });
+          }
+        }
+      });
+
+      // Portfolio Filter
+      filterBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          // Remove active class from all buttons
+          filterBtns.forEach((btn) => btn.classList.remove("active"));
+          // Add active class to clicked button
+          btn.classList.add("active");
+
+          const filterValue = btn.getAttribute("data-filter");
+
+          portfolioItems.forEach((item) => {
+            if (
+              filterValue === "all" ||
+              item.getAttribute("data-category") === filterValue
+            ) {
+              item.style.display = "block";
+              setTimeout(() => {
+                item.style.opacity = "1";
+                item.style.transform = "scale(1)";
+              }, 200);
+            } else {
+              item.style.opacity = "0";
+              item.style.transform = "scale(0.8)";
+              setTimeout(() => {
+                item.style.display = "none";
+              }, 200);
+            }
+          });
+        });
+      });
+
+      // Testimonial Slider
+      testimonialDots.forEach((dot, index) => {
+        dot.addEventListener("click", () => {
+          // Remove active class from all dots and testimonials
+          testimonialDots.forEach((d) => d.classList.remove("active"));
+          testimonialItems.forEach((item) => item.classList.remove("active"));
+
+          // Add active class to clicked dot and corresponding testimonial
+          dot.classList.add("active");
+          testimonialItems[index].classList.add("active");
+        });
+      });
+
+      // Auto slide testimonials
+      let currentTestimonial = 0;
+      const autoSlide = () => {
+        currentTestimonial = (currentTestimonial + 1) % testimonialItems.length;
+        testimonialDots.forEach((d) => d.classList.remove("active"));
+        testimonialItems.forEach((item) => item.classList.remove("active"));
+        testimonialDots[currentTestimonial].classList.add("active");
+        testimonialItems[currentTestimonial].classList.add("active");
+      };
+
+      let testimonialInterval = setInterval(autoSlide, 5000);
+
+      // Pause auto slide when hovering over testimonials
+      const testimonialSlider = document.querySelector(".testimonial-slider");
+      testimonialSlider.addEventListener("mouseenter", () => {
+        clearInterval(testimonialInterval);
+      });
+
+      testimonialSlider.addEventListener("mouseleave", () => {
+        testimonialInterval = setInterval(autoSlide, 5000);
+      });
+
+      // Contact Form Submission
+      if (contactForm) {
+        contactForm.addEventListener("submit", (e) => {
+          e.preventDefault();
+
+          // Get form values
+          const name = document.getElementById("name").value;
+          const email = document.getElementById("email").value;
+          const subject = document.getElementById("subject").value;
+          const message = document.getElementById("message").value;
+
+          // Simple form validation
+          if (name && email && subject && message) {
+            // In a real application, you would send this data to a server
+            alert("Thank you for your message! I will get back to you soon.");
+            contactForm.reset();
+          } else {
+            alert("Please fill in all fields.");
+          }
+        });
+      }
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          const targetId = this.getAttribute("href");
+          if (targetId === "#") return;
+
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            const headerHeight = document.querySelector("header").offsetHeight;
+            const targetPosition = targetElement.offsetTop - headerHeight;
+
+            window.scrollTo({
+              top: targetPosition,
+              behavior: "smooth",
+            });
+          }
+        });
+      });
+
+      // Reveal animations on scroll
+      const revealElements = document.querySelectorAll(
+        ".skill-card, .portfolio-item, .about-image, .about-text"
+      );
+
+      const revealOnScroll = () => {
+        const windowHeight = window.innerHeight;
+        const revealPoint = 150;
+
+        revealElements.forEach((element) => {
+          const elementTop = element.getBoundingClientRect().top;
+
+          if (elementTop < windowHeight - revealPoint) {
+            element.style.opacity = "1";
+            element.style.transform = element.classList.contains(
+              "portfolio-item"
+            )
+              ? "translateY(0)"
+              : element.classList.contains("skill-card")
+              ? "translateY(0)"
+              : "translateX(0)";
+          }
+        });
+      };
+
+      // Initialize elements with opacity 0
+      revealElements.forEach((element) => {
+        element.style.opacity = "0";
+        element.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+
+        if (element.classList.contains("portfolio-item")) {
+          element.style.transform = "translateY(50px)";
+        } else if (element.classList.contains("skill-card")) {
+          element.style.transform = "translateY(30px)";
+        } else if (element.classList.contains("about-image")) {
+          element.style.transform = "translateX(-50px)";
+        } else if (element.classList.contains("about-text")) {
+          element.style.transform = "translateX(50px)";
+        }
+      });
+
+      window.addEventListener("scroll", revealOnScroll);
+      window.addEventListener("load", revealOnScroll);
+    </script>
+  </body>
+</html>
